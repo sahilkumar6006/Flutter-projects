@@ -1,3 +1,5 @@
-int calculate() {
-  return 6 * 7;
+void main(List<String> args) {
+  const name = 'Foo';
+  print(name);
+  name = "hello"
 }

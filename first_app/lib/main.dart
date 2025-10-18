@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
-import 'screens/meme_home_page.dart';
+import 'pages/onboarding.dart';
 
 void main() {
-  runApp(const MemeApp());
+  runApp(const MovieBookingApp());
 }
 
-class MemeApp extends StatelessWidget {
-  const MemeApp({super.key});
+class MovieBookingApp extends StatelessWidget {
+  const MovieBookingApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Meme App',
-      theme: ThemeData(primarySwatch: Colors.deepPurple, useMaterial3: true),
+      title: 'Movie Booking App',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
-      home: const MemeHomePage(),
+      home: const Onboarding(),
     );
   }
 }
