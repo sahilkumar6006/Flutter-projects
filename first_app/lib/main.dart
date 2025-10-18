@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import '/notes_list_screen.dart';
+import 'screens/meme_home_page.dart';
 
 void main() {
-  runApp(const NotesApp());
+  runApp(const MemeApp());
 }
 
-class NotesApp extends StatelessWidget {
-  const NotesApp({super.key});
+class MemeApp extends StatelessWidget {
+  const MemeApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Notes App',
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: const NotesListScreen(),
+      title: 'Meme App',
+      theme: ThemeData(primarySwatch: Colors.deepPurple, useMaterial3: true),
+      debugShowCheckedModeBanner: false,
+      home: const MemeHomePage(),
     );
   }
 }
