@@ -18,9 +18,39 @@ class _OnboardingState extends State<Onboarding> {
         child: Column(
           children: [
             Image.asset("assets/images/onboard.png"),
+            SizedBox(height: 20.0),
             Text(
-              "The Fastes\n Food Delivery",
+              "The Fastest\n Food Delivery",
+              textAlign: TextAlign.center,
               style: AppWidget.HeadLineTextFieldStyle(),
+            ),
+
+            SizedBox(height: 30),
+
+            Text(
+              'Craving something delicious?\n  Order now and get your favourite dish delivered',
+              textAlign: TextAlign.center,
+              style: AppWidget.simpleTextFieldStyle(),
+            ),
+            SizedBox(height: 30),
+            Container(
+              height: 60,
+
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                color: Color(0xff8c592a),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Center(
+                child: Text(
+                  "Get Started",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
