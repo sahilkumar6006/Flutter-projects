@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/onboarding.dart';
+import 'pages/Onboarding.dart';
+import 'pages/home.dart';
 
 void main() {
   runApp(const MovieBookingApp());
