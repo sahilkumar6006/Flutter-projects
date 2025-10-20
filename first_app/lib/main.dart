@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'pages/Onboarding.dart';
 import 'pages/home.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MovieBookingApp());
+  runApp(const ProviderScope(child: MovieBookingApp()));
 }
 
 class MovieBookingApp extends StatelessWidget {

@@ -4,6 +4,8 @@ import 'package:first_app/service/category_data.dart';
 import 'package:first_app/service/pizza_data.dart';
 import 'package:first_app/service/widget_support.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:first_app/state/cart.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -181,7 +183,7 @@ class CategoryTile extends StatelessWidget {
 }
 
 // ---------- Pizza Tile Widget ----------
-class PizzaTile extends StatelessWidget {
+class PizzaTile extends ConsumerWidget {
   final String name;
   final String image;
   final String price;
@@ -194,7 +196,7 @@ class PizzaTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: 180,
       margin: const EdgeInsets.only(right: 15.0),
@@ -249,17 +251,33 @@ class PizzaTile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xffef2b39),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Text(
-                    "Add to Cart",
-                    style: TextStyle(color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    final parsed = double.tryParse(price.replaceAll(RegExp(r'[^0-9\.]'), '')) ?? 0.0;
+                    ref.read(cartProvider.notifier).addItem(
+                          CartItem(
+                            id: name, // using name as ID here
+                            name: name,
+                            price: parsed,
+                            qty: 1,
+                          ),
+                        );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Added to cart')),
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffef2b39),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Text(
+                      "Add to Cart",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ],
